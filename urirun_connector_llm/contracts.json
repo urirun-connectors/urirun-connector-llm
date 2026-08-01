@@ -5,15 +5,36 @@
       "effect": "command",
       "reversible": false,
       "inp": {
-        "prompt": "?str", "model": "?str", "base_url": "?str", "provider": "?str",
-        "image": "?str", "images": "?list", "api_key": "?str", "secret_allow": "?str"
+        "prompt": "?str",
+        "model": "?str",
+        "base_url": "?str",
+        "provider": "?str",
+        "image": "?str",
+        "images": "?list",
+        "api_key": "?str",
+        "secret_allow": "?str"
       },
-      "out": { "model": "str", "provider": "str", "response": "str" },
-      "errors": ["precondition-unmet", "unauthenticated", "degraded-backend"],
+      "out": {
+        "model": "str",
+        "provider": "str",
+        "response": "str"
+      },
+      "errors": [
+        "precondition-unmet",
+        "unauthenticated",
+        "degraded-backend"
+      ],
       "examples": [
         {
-          "payload": { "prompt": "Say hi" },
-          "result": { "ok": true, "model": "llama3", "provider": "ollama", "response": "Hello!" }
+          "payload": {
+            "prompt": "Say hi"
+          },
+          "result": {
+            "ok": true,
+            "model": "llama3",
+            "provider": "ollama",
+            "response": "Hello!"
+          }
         }
       ]
     },
@@ -22,15 +43,35 @@
       "effect": "command",
       "reversible": false,
       "inp": {
-        "image": "?str", "model": "?str", "base_url": "?str", "provider": "?str",
-        "prompt": "?str", "api_key": "?str", "secret_allow": "?str"
+        "image": "?str",
+        "model": "?str",
+        "base_url": "?str",
+        "provider": "?str",
+        "prompt": "?str",
+        "api_key": "?str",
+        "secret_allow": "?str"
       },
-      "out": { "model": "str", "provider": "str", "response": "str" },
-      "errors": ["precondition-unmet", "unauthenticated", "degraded-backend"],
+      "out": {
+        "model": "str",
+        "provider": "str",
+        "response": "str"
+      },
+      "errors": [
+        "precondition-unmet",
+        "unauthenticated",
+        "degraded-backend"
+      ],
       "examples": [
         {
-          "payload": { "image": "/tmp/receipt.png" },
-          "result": { "ok": true, "model": "llava", "provider": "ollama", "response": "TOTAL 12.00" }
+          "payload": {
+            "image": "/tmp/receipt.png"
+          },
+          "result": {
+            "ok": true,
+            "model": "llava",
+            "provider": "ollama",
+            "response": "TOTAL 12.00"
+          }
         }
       ]
     },
@@ -38,13 +79,48 @@
       "version": "v1",
       "effect": "query",
       "reversible": false,
-      "inp": { "base_url": "?str" },
-      "out": { "models": "list" },
-      "errors": ["degraded-backend"],
+      "inp": {
+        "base_url": "?str"
+      },
+      "out": {
+        "models": "list"
+      },
+      "errors": [
+        "degraded-backend"
+      ],
       "examples": [
         {
           "payload": {},
-          "result": { "ok": true, "models": ["llama3", "llava"] }
+          "result": {
+            "ok": true,
+            "models": [
+              "llama3",
+              "llava"
+            ]
+          }
+        }
+      ]
+    },
+    "doctor/query/report": {
+      "version": "v1",
+      "effect": "query",
+      "reversible": false,
+      "inp": {},
+      "out": {
+        "connector": "str",
+        "version": "str",
+        "status": "str"
+      },
+      "errors": [],
+      "examples": [
+        {
+          "payload": {},
+          "result": {
+            "ok": true,
+            "connector": "llm",
+            "version": "0.1.0",
+            "status": "ready"
+          }
         }
       ]
     }

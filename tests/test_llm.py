@@ -13,7 +13,8 @@ import urirun_connector_llm.core as core
 ROUTE_COMPLETE = "llm://host/chat/command/complete"
 ROUTE_MODELS = "llm://host/model/query/list"
 ROUTE_OCR = "llm://host/vision/command/ocr"
-ALL_ROUTES = {ROUTE_COMPLETE, ROUTE_MODELS, ROUTE_OCR}
+ROUTE_DOCTOR = "llm://host/doctor/query/report"
+ALL_ROUTES = {ROUTE_COMPLETE, ROUTE_MODELS, ROUTE_OCR, ROUTE_DOCTOR}
 
 # 1x1 transparent PNG as a data-URI, for image tests (no real OCR needed).
 PNG_1PX = ("data:image/png;base64,"

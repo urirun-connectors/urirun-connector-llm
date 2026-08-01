@@ -42,6 +42,7 @@
   ],
   "routes": [
     "llm://host/chat/command/complete",
+    "llm://host/doctor/query/report",
     "llm://host/model/query/list",
     "llm://host/vision/command/ocr"
   ],
