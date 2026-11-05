@@ -222,3 +222,24 @@ def test_ocr_route(monkeypatch) -> None:
 
 def test_ocr_requires_image() -> None:
     assert ocr("")["ok"] is False
+
+
+def test_complete_with_oqllm_docker() -> None:
+    import pytest
+    import urllib.request
+    try:
+        with urllib.request.urlopen("http://127.0.0.1:11437/health", timeout=1.0) as resp:
+            if resp.status != 200:
+                pytest.skip("OQLLM Docker not healthy")
+    except Exception:
+        pytest.skip("OQLLM Docker not reachable on 11437")
+
+    res = complete(
+        prompt="proc://dockuri/ops/container/list",
+        model="oqlos/system-one-router",
+        base_url="http://127.0.0.1:11437",
+        provider="ollama",
+    )
+    assert res["ok"] is True
+    assert "proc://dockuri/ops/container/list" in res["response"]
+
